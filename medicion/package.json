@@ -1,0 +1,9 @@
+{
+  "name": "medicion",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "eslint": "10.15.0",
+    "espree": "11.2.0"
+  }
+}
