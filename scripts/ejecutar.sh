@@ -6,8 +6,8 @@
 set -euo pipefail
 R="$(cd "$(dirname "$0")/.." && pwd)"
 cfg="$1"; n="$2"; id="$cfg-$n"
-copia="$R/ejecuciones/$id"
-rm -rf "$copia"; mkdir -p "$copia" "$R/resultados"
+copia="$R/ejecuciones-nuevas/$id"  # no pisa las ejecuciones publicadas en ejecuciones/
+rm -rf "$copia"; mkdir -p "$copia" "$R/resultados-nuevos"
 cp -r "$R/plantillas/$cfg/." "$copia/"
 cd "$copia"
 inicio=$(date -Is)
@@ -28,11 +28,11 @@ claude -p "$(cat "$R/scripts/tarea.txt")" \
   --permission-mode dontAsk \
   --max-budget-usd 5 \
   --output-format stream-json --verbose \
-  > "$R/resultados/$id.jsonl" 2> "$R/resultados/$id.err"
+  > "$R/resultados-nuevos/$id.jsonl" 2> "$R/resultados-nuevos/$id.err"
 rc=$?
 set -e
-tail -1 "$R/resultados/$id.jsonl" > "$R/resultados/$id.json"
-echo "{\"id\":\"$id\",\"inicio\":\"$inicio\",\"fin\":\"$(date -Is)\",\"rc\":$rc}" > "$R/resultados/$id.meta.json"
+tail -1 "$R/resultados-nuevos/$id.jsonl" > "$R/resultados-nuevos/$id.json"
+echo "{\"id\":\"$id\",\"inicio\":\"$inicio\",\"fin\":\"$(date -Is)\",\"rc\":$rc}" > "$R/resultados-nuevos/$id.meta.json"
 cd "$R/medicion"
-node --disable-warning=ExperimentalWarning medir.mjs "$copia" "$R/plantillas/$cfg" "$R/resultados/$id.json" > "$R/resultados/$id.medidas.json"
+node --disable-warning=ExperimentalWarning medir.mjs "$copia" "$R/plantillas/$cfg" "$R/resultados-nuevos/$id.json" > "$R/resultados-nuevos/$id.medidas.json"
 echo "$id terminado (rc=$rc)"

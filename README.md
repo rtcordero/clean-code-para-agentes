@@ -12,7 +12,7 @@ La misma tarea, dada a Claude Code en cuatro versiones del mismo proyecto, para 
 | `configuraciones/` | Lo que se añade a la base en cada configuración: A (nada), B («Escribe código limpio»), C (14 reglas comprobables en `AGENTS.md`) y D (C más ESLint y un test de arquitectura) |
 | `scripts/` | La tarea (`tarea.txt`), la nota de entorno y los guiones para preparar y lanzar cada ejecución |
 | `medicion/` | Cómo se midió cada ejecución: 16 tests de aceptación que el agente no veía, la configuración de ESLint y el guion de medición |
-| `ejecuciones/` | El código que dejó el agente en cada una de las 12 ejecuciones |
+| `ejecuciones/` | El código que dejó el agente en cada una de las 12 ejecuciones (`src/` y `test/`; la configuración de cada una está en `configuraciones/<A-D>/`) |
 | `resultados/` | Las medidas de cada ejecución, la tabla completa (`tabla.md`) y la secuencia de herramientas y órdenes de cada una (`secuencias/`) |
 | `revisor/` | Un subagente revisor de solo lectura y una skill de revisión de código limpio, de ejemplo. No se ejecutaron en esta ronda |
 
@@ -37,6 +37,8 @@ Tres ejecuciones por configuración, con Claude Code 2.1.326 y Claude Opus 5.5 (
 
 Es una muestra pequeña: una tarea, un modelo y tres ejecuciones por configuración. El análisis completo está en el artículo.
 
+El proyecto base tiene dos simplificaciones a propósito, explicadas en `base/README.md`: el caso de uso depende de la infraestructura y la fecha se toma en UTC. Las dependencias no van fijadas con un `package-lock.json`: las versiones directas están fijadas en cada `package.json`.
+
 ## Comprobar los resultados sin volver a llamar al agente
 
 ```bash
@@ -57,7 +59,7 @@ scripts/ronda.sh 4    # lanza A-4, B-4, C-4 y D-4 en paralelo
 node scripts/tabla.mjs
 ```
 
-`scripts/ejecutar.sh` guarda el código en `ejecuciones/<id>` y las medidas en `resultados/<id>.medidas.json`. El comando exacto de Claude Code, con el aislamiento de la configuración personal y las herramientas permitidas, está en ese guion.
+`scripts/ejecutar.sh` guarda el código en `ejecuciones-nuevas/<id>` y las medidas en `resultados-nuevos/`, para no pisar las ejecuciones publicadas. `node scripts/tabla.mjs` lee `resultados/`; para las tuyas, `node scripts/tabla.mjs resultados-nuevos`. El comando exacto de Claude Code, con el aislamiento de la configuración personal y las herramientas permitidas, está en ese guion.
 
 ## Clean code rules for AI coding agents: an experiment
 

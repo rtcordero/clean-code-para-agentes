@@ -3,7 +3,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'resultados');
+const dir = join(dirname(fileURLToPath(import.meta.url)), '..', process.argv[2] ?? 'resultados');
 const filas = readdirSync(dir)
   .filter((f) => /^[ABCD]-\d+\.medidas\.json$/.test(f))
   .sort()

@@ -3,3 +3,4 @@ plantillas/
 /ejecuciones-nuevas/
 resultados/*.jsonl
 resultados/*.err
+resultados-nuevos/

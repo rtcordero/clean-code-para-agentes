@@ -29,7 +29,7 @@ for (const id of ejecuciones) {
     overrideConfigFile: join(aqui, 'eslint.config.js'),
   });
   const informes = await eslint.lintFiles(['src/**/*.ts']);
-  const avisos = informes.reduce((total, f) => total + f.messages.length, 0);
+  const avisos = informes.reduce((total, informe) => total + informe.messages.length, 0);
 
   const bien =
     pasan === esperado.aceptacion.pasan &&
