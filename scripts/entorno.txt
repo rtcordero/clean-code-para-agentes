@@ -1,0 +1,1 @@
+Entorno de esta sesión: la terminal (Bash) permite órdenes de lectura (ls, cat, find, grep, head, tail, wc, echo) y npm o node (npm test, npm run <script>, node --test). El resto de órdenes, incluidos los bucles de shell, se deniegan. Que se deniegue una orden no significa que la terminal esté desactivada; para leer ficheros también tienes Read, Glob y Grep.

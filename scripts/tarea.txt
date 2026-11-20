@@ -1,0 +1,13 @@
+Tarea: descuentos en la cuota mensual del gimnasio.
+
+Hasta ahora cada socio paga la tarifa de su plan (básico 29,90 €, premium 49,90 €). A partir del mes que viene se aplican descuentos sobre esa tarifa:
+
+1. Antigüedad: con 2 años cumplidos o más desde la fecha de alta, 10 %; con 5 años cumplidos o más, 15 %.
+2. Estudiantes: si el socio es estudiante y aún no ha cumplido 26 años, 20 %.
+3. Los descuentos de antigüedad y de estudiante no se acumulan: se aplica el mayor de los dos.
+4. Familias: si el socio pertenece a una familia (familiaId) con 3 o más socios en el gimnasio, contándole a él, 5 % más, acumulable con el resto.
+5. Verano: en agosto, el plan básico tiene un 25 % más, acumulable con el resto.
+6. Los porcentajes acumulables se suman, y el descuento total nunca supera el 30 %.
+7. El importe final se redondea al céntimo más cercano (medio céntimo, hacia arriba).
+
+La antigüedad, la edad y el mes se calculan en la fecha del cobro, la que da el reloj. La función cobrarCuota(repositorio, reloj, socioId) de src/aplicacion/cobrar-cuota.ts la usa facturación: mantén su firma y su recibo. Implementa la tarea completa en este proyecto y, cuando termines, resume en pocas líneas qué has cambiado.
