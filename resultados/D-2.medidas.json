@@ -1,0 +1,58 @@
+{
+  "copia": "ejecuciones/D-2",
+  "testsProyecto": {
+    "verde": true,
+    "tests": 39,
+    "pasan": 39,
+    "fallan": 0
+  },
+  "aceptacion": {
+    "tests": 16,
+    "pasan": 16,
+    "fallan": 0
+  },
+  "erroresTipos": 0,
+  "eslint": {
+    "avisos": 0,
+    "porRegla": {}
+  },
+  "numerosMagicos": 0,
+  "complejidadMaxima": 3,
+  "funcionMasLarga": {
+    "fichero": "src/aplicacion/cobrar-cuota.ts",
+    "linea": 14,
+    "lineas": 17
+  },
+  "funcionesDeMasDe20Lineas": 0,
+  "violacionesCapas": [],
+  "relojEnDominio": [],
+  "comentariosConCodigo": 0,
+  "diff": {
+    "src": {
+      "anadidas": 119,
+      "borradas": 5,
+      "ficheros": 4
+    },
+    "test": {
+      "anadidas": 198,
+      "borradas": 1,
+      "ficheros": 4
+    }
+  },
+  "ficherosNuevosFuera": [],
+  "claude": {
+    "is_error": false,
+    "subtype": "success",
+    "num_turns": 17,
+    "duration_ms": 153524,
+    "total_cost_usd": 0.6035523999999999,
+    "input_tokens": 22,
+    "cache_read_input_tokens": 206842,
+    "cache_creation_input_tokens": 26172,
+    "output_tokens": 17636,
+    "modelos": [
+      "claude-opus-5-5"
+    ],
+    "permission_denials": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "gimnasio-cuotas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc --noEmit",
+    "lint": "NODE_OPTIONS=--disable-warning=ExperimentalWarning eslint src"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "eslint": "10.15.0",
+    "typescript": "7.0.2"
+  }
+}
