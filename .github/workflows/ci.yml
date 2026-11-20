@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    name: Proyecto base y resultados del experimento
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24.22.3'
+      - name: Tests y tipos del proyecto base
+        working-directory: base
+        run: |
+          npm install --no-audit --no-fund
+          npm test
+          npm run typecheck
+      - name: Las doce ejecuciones dan lo que dice la tabla
+        working-directory: medicion
+        env:
+          NODE_OPTIONS: --disable-warning=ExperimentalWarning
+        run: |
+          npm install --no-audit --no-fund
+          node comprobar-resultados.mjs
