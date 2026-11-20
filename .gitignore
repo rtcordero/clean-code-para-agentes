@@ -1,0 +1,5 @@
+node_modules/
+plantillas/
+/ejecuciones-nuevas/
+resultados/*.jsonl
+resultados/*.err
